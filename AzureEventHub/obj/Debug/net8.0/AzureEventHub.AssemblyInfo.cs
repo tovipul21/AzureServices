@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureEventHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8110813df2ac78effdd30a135482690bf70ceda1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15b412c752ed304884e35ae03bb952a68e559faa")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureEventHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureEventHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

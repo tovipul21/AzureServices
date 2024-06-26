@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureEventHub\\AzureEventHub.csproj": {}
+    "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureServices\\AzureEventHub\\AzureEventHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureEventHub\\AzureEventHub.csproj": {
+    "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureServices\\AzureEventHub\\AzureEventHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureEventHub\\AzureEventHub.csproj",
+        "projectUniqueName": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureServices\\AzureEventHub\\AzureEventHub.csproj",
         "projectName": "AzureEventHub",
-        "projectPath": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureEventHub\\AzureEventHub.csproj",
+        "projectPath": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureServices\\AzureEventHub\\AzureEventHub.csproj",
         "packagesPath": "C:\\Users\\Vipul Mehta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureEventHub\\obj\\",
+        "outputPath": "C:\\Users\\Vipul Mehta\\source\\repos\\AzureServices\\AzureServices\\AzureEventHub\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

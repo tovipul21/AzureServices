@@ -20,7 +20,6 @@ namespace AzureEventHub
             
             await SendEnumerableOfEventAsync(connectionString);
 
-            Console.WriteLine($"{secretName} = {connectionString}");
             Console.WriteLine("Sent all events to eventhub process !!");
         }
 
