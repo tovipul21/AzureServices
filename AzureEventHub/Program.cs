@@ -1,14 +1,11 @@
-﻿using Azure.Messaging.EventHubs;
+﻿using Azure.Identity;
+using Azure.Messaging.EventHubs;
 using Azure.Messaging.EventHubs.Producer;
-using System.Globalization;
-using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using System;
-using Microsoft.Azure.Amqp.Framing;
-using System.Collections;
+using System.Globalization;
 
 namespace AzureEventHub
-{ 
+{
     internal class Program
     {
         static async Task Main(string[] args)
