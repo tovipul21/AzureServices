@@ -11,19 +11,37 @@ namespace AzureEventHub
         static async Task Main(string[] args)
         {
             Console.WriteLine("Start event hub process");
+            var keyVaultName = "samplekeyvaultv1";
             string secretName = "EventHub1ConnectionString";
             
-            string connectionString = await RetriveSecretFromValutAsync(secretName);
+            Console.WriteLine("Enter secret value");
+            string secretValue = Console.ReadLine();
+            
+            await SetSecretIntoValutAsync(keyVaultName, secretName, secretValue);
+
+            string connectionString = await RetriveSecretFromValutAsync(keyVaultName, secretName);
             
             await SendEnumerableOfEventAsync(connectionString);
 
             Console.WriteLine("Sent all events to eventhub process !!");
         }
 
-        private static async Task<string> RetriveSecretFromValutAsync(string secretName)
+        private static async Task<string> SetSecretIntoValutAsync(string keyVaultName, string secretName, string secretValue)
         {
             KeyVaultSecret kvs;
-            var keyVaultName = "";
+            
+            var keyVaultURI = $"https://{keyVaultName}.vault.azure.net/";
+
+            var client = new SecretClient(new Uri(keyVaultURI), new DefaultAzureCredential());
+
+            kvs = await client.SetSecretAsync(secretName, secretValue);
+
+            return kvs.Value;
+        }
+
+        private static async Task<string> RetriveSecretFromValutAsync(string keyVaultName, string secretName)
+        {
+            KeyVaultSecret kvs;
             var keyVaultURI = $"https://{keyVaultName}.vault.azure.net/";
 
             var client = new SecretClient(new Uri(keyVaultURI), new DefaultAzureCredential());
