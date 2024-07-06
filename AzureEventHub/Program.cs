@@ -16,17 +16,19 @@ namespace AzureEventHub
             
             Console.WriteLine("Enter secret value");
             string secretValue = Console.ReadLine();
-            
-            await SetSecretIntoValutAsync(keyVaultName, secretName, secretValue);
 
-            string connectionString = await RetriveSecretFromValutAsync(keyVaultName, secretName);
+            // Only set the secret value in Key Vault when some one updates it using console
+            if (secretValue.Trim().Length > 0)
+                await SetSecretIntoVaultAsync(keyVaultName, secretName, secretValue);
+            
+            string connectionString = await RetriveSecretFromVaultAsync(keyVaultName, secretName);
             
             await SendEnumerableOfEventAsync(connectionString);
 
             Console.WriteLine("Sent all events to eventhub process !!");
         }
 
-        private static async Task<string> SetSecretIntoValutAsync(string keyVaultName, string secretName, string secretValue)
+        private static async Task<string> SetSecretIntoVaultAsync(string keyVaultName, string secretName, string secretValue)
         {
             KeyVaultSecret kvs;
             
@@ -39,7 +41,7 @@ namespace AzureEventHub
             return kvs.Value;
         }
 
-        private static async Task<string> RetriveSecretFromValutAsync(string keyVaultName, string secretName)
+        private static async Task<string> RetriveSecretFromVaultAsync(string keyVaultName, string secretName)
         {
             KeyVaultSecret kvs;
             var keyVaultURI = $"https://{keyVaultName}.vault.azure.net/";
