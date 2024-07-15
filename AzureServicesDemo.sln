@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureEventHub", "AzureEventHub\AzureEventHub.csproj", "{6EF19B2F-B869-4279-B586-199426903E3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureEventHub-Send", "AzureEventHub\AzureEventHub-Send.csproj", "{6EF19B2F-B869-4279-B586-199426903E3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
