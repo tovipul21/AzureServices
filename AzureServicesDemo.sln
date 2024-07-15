@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureEventHub-Send", "Azure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureEventHub-Read", "AzureEventHub-Read\AzureEventHub-Read.csproj", "{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureEventHub", "AzureEventHub", "{12BE3215-607A-4641-95DC-8991C9EA0CB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6EF19B2F-B869-4279-B586-199426903E3F} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
+		{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05B87E2F-89BA-4EDE-A2D1-D824484ACBD5}
