@@ -11,8 +11,8 @@ namespace AzureEventHub
         static async Task Main(string[] args)
         {
             Console.WriteLine("Start event hub process");
-            var keyVaultName = "samplekeyvaultv1";
-            string secretName = "EventHub1ConnectionString";
+            var keyVaultName = "sample-keyvault-v1";
+            string secretName = "SendEventHubMessageConnectionString";
             
             Console.WriteLine("Enter secret value");
             string secretValue = Console.ReadLine();
@@ -23,7 +23,7 @@ namespace AzureEventHub
             
             string connectionString = await RetriveSecretFromVaultAsync(keyVaultName, secretName);
             
-            await SendEnumerableOfEventAsync(connectionString);
+            await SendMessagesToEventHubEventAsync(connectionString);
 
             Console.WriteLine("Sent all events to eventhub process !!");
         }
@@ -53,20 +53,21 @@ namespace AzureEventHub
             return kvs.Value;
         }
 
-        private static async Task SendEnumerableOfEventAsync(string connectionString)
+        private static async Task SendMessagesToEventHubEventAsync(string connectionString)
         {
             EventHubProducerClient producerClient = new EventHubProducerClient(connectionString);
 
             List<EventData> eventDataList = new List<EventData>();
             string eventBody;
 
-            for (int i = 1; i <= 1750; i++)
+            for (int i = 1; i <= 2600; i++)
             {
+                Guid _guid = Guid.NewGuid();
                 eventBody = $"Add event no {i} at {DateTime.Now.ToString()}";
 
                 eventDataList.Add(new EventData(eventBody));
                 
-                Console.WriteLine($"Added event # {i} at {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                Console.WriteLine($"Added event # {i} with Guid as {_guid} at {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff",
                     CultureInfo.InvariantCulture)} to event hub");
 
                 eventBody = string.Empty;
