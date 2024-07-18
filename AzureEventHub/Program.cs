@@ -11,7 +11,7 @@ namespace AzureEventHub
         static async Task Main(string[] args)
         {
             Console.WriteLine("Start event hub process");
-            var keyVaultName = "sample-keyvault-v1";
+            var keyVaultName = "sample-keyvault-v3";
             string secretName = "SendEventHubMessageConnectionString";
             
             Console.WriteLine("Enter secret value");
@@ -60,10 +60,10 @@ namespace AzureEventHub
             List<EventData> eventDataList = new List<EventData>();
             string eventBody;
 
-            for (int i = 1; i <= 2600; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 Guid _guid = Guid.NewGuid();
-                eventBody = $"Add event no {i} at {DateTime.Now.ToString()}";
+                eventBody = $"Add event no {i} for Guid - {_guid} at {DateTime.Now.ToString()}";
 
                 eventDataList.Add(new EventData(eventBody));
                 

@@ -5,9 +5,11 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureEventHub-Send", "AzureEventHub\AzureEventHub-Send.csproj", "{6EF19B2F-B869-4279-B586-199426903E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureEventHub-Read", "AzureEventHub-Read\AzureEventHub-Read.csproj", "{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureEventHub-Read", "AzureEventHub-Read\AzureEventHub-Read.csproj", "{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureEventHub", "AzureEventHub", "{12BE3215-607A-4641-95DC-8991C9EA0CB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunction-AzureEventHub", "AzureFunction-AzureEventHub\AzureFunction-AzureEventHub.csproj", "{89673654-1D1C-4CF3-A8C4-C6ADA40036F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89673654-1D1C-4CF3-A8C4-C6ADA40036F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89673654-1D1C-4CF3-A8C4-C6ADA40036F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89673654-1D1C-4CF3-A8C4-C6ADA40036F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89673654-1D1C-4CF3-A8C4-C6ADA40036F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6EF19B2F-B869-4279-B586-199426903E3F} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
 		{B4C8AB7F-86C7-49F8-AB3B-A98477CF0512} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
+		{89673654-1D1C-4CF3-A8C4-C6ADA40036F4} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05B87E2F-89BA-4EDE-A2D1-D824484ACBD5}
