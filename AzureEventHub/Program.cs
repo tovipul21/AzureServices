@@ -60,7 +60,7 @@ namespace AzureEventHub
             List<EventData> eventDataList = new List<EventData>();
             string eventBody;
 
-            for (int i = 1; i <= 4; i++)
+            for (int i = 1; i <= 13; i++)
             {
                 Guid _guid = Guid.NewGuid();
                 eventBody = $"Add event no {i} for Guid - {_guid} at {DateTime.Now.ToString()}";

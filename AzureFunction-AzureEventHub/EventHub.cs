@@ -1,4 +1,3 @@
-using System;
 using Azure.Messaging.EventHubs;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
@@ -19,8 +18,10 @@ namespace AzureFunction_AzureEventHub
         {
             foreach (EventData @event in events)
             {
-                _logger.LogInformation($"Event Body: {@event.SequenceNumber}");
-                _logger.LogInformation("Event Content-Type: {contentType}", @event.ContentType);
+                //_logger.LogInformation($"Event Body - {@event.SequenceNumber}");
+                //_logger.LogInformation($"Partition key - {@event.PartitionKey}");
+                //_logger.LogInformation($"Data Offset - {@event.Offset}");
+                _logger.LogInformation($"Data Offset - {@event.EventBody}");
             }
         }
     }
