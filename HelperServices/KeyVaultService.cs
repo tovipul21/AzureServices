@@ -21,7 +21,7 @@ namespace HelperServices
         {
             get
             {
-                _keyVaultName = _configurationRoot["EventHubKeyVaultName"];
+                _keyVaultName = this._configurationRoot["EventHubKeyVaultName"];
 
                 return _keyVaultName == null ? "" : _keyVaultName;
             }
@@ -31,7 +31,7 @@ namespace HelperServices
         { 
             get
             {
-                _secretName = _configurationRoot["SecretName"];
+                _secretName = this._configurationRoot["SecretName"];
 
                 return _secretName == null ? "" : _secretName;
             }
@@ -40,11 +40,11 @@ namespace HelperServices
         public async Task<string> RetriveSecretFromVaultAsync()
         {
             KeyVaultSecret kvs;
-            var keyVaultURI = $"https://{_keyVaultName}.vault.azure.net/";
+            var keyVaultURI = $"https://{this.KeyVaultName}.vault.azure.net/";
 
             var client = new SecretClient(new Uri(keyVaultURI), new DefaultAzureCredential());
 
-            kvs = await client.GetSecretAsync(_secretName);
+            kvs = await client.GetSecretAsync(this.SecretName);
 
             return kvs.Value;
         }
@@ -53,11 +53,11 @@ namespace HelperServices
         {
             KeyVaultSecret kvs;
 
-            var keyVaultURI = $"https://{_keyVaultName}.vault.azure.net/";
+            var keyVaultURI = $"https://{this.KeyVaultName}.vault.azure.net/";
 
             var client = new SecretClient(new Uri(keyVaultURI), new DefaultAzureCredential());
 
-            kvs = await client.SetSecretAsync(_secretName, newSecretValue);
+            kvs = await client.SetSecretAsync(this.SecretName, newSecretValue);
 
             return kvs.Value;
         }
