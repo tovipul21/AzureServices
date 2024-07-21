@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureServiceBus", "AzureSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureServiceBus-Send", "AzureServiceBus-Send\AzureServiceBus-Send.csproj", "{6F5C755D-D098-40FC-8DEF-2AD27AA59EEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBus-Peek", "AzureServiceBus-Peek\AzureServiceBus-Peek.csproj", "{5E7CF692-81F1-4695-9205-D88866F6C07E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{6F5C755D-D098-40FC-8DEF-2AD27AA59EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F5C755D-D098-40FC-8DEF-2AD27AA59EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F5C755D-D098-40FC-8DEF-2AD27AA59EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7CF692-81F1-4695-9205-D88866F6C07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7CF692-81F1-4695-9205-D88866F6C07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7CF692-81F1-4695-9205-D88866F6C07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7CF692-81F1-4695-9205-D88866F6C07E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{44FB87D4-7A01-4FEF-AB1A-3B145244CD25} = {12BE3215-607A-4641-95DC-8991C9EA0CB7}
 		{516AC167-F6FA-43C3-9BA2-198CD044CBF5} = {7F44600C-FF69-4A70-9FD5-0637EBFDD63F}
 		{6F5C755D-D098-40FC-8DEF-2AD27AA59EEB} = {1F323445-5DB8-49DA-8B0D-1ACC7E2052FE}
+		{5E7CF692-81F1-4695-9205-D88866F6C07E} = {1F323445-5DB8-49DA-8B0D-1ACC7E2052FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05B87E2F-89BA-4EDE-A2D1-D824484ACBD5}
