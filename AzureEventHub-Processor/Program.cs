@@ -22,11 +22,10 @@ namespace AzureEventHub_Processor
             _configurationRoot = _builder.Build();
 
             var consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
-            var storageaccountConnectionString = _configurationRoot["StorageAccountConnectionString"];
             var containerName = "readevents";
             KeyVaultService kvService = new KeyVaultService();
             string eventHubConnectionString = await kvService.RetriveSecretFromVaultAsync();
-
+            string storageaccountConnectionString = await kvService.RetriveSecretFromVaultAsync("StorageAccountConnectionString");
             BlobContainerClient blobContainerClient = new(storageaccountConnectionString, containerName);
             EventProcessorClient eventProcessorClient = new(blobContainerClient, consumerGroup, eventHubConnectionString);
 
