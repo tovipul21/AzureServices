@@ -22,12 +22,21 @@ namespace AzureServiceBus_Send
             
             string eventHubConnectionString = await kvService.RetriveSecretFromVaultAsync();
 
-            List<Order> orders = new List<Order>() 
-            { 
-                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 23.20M },
-                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 42.55M },
-                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 52.65M }
-            };
+            Console.WriteLine("Enter the number of messages to be pushed into the queue");
+            int messageCountToBePushed = Int32.Parse(Console.ReadLine());
+
+            // Add messages into the queue
+            List<Order> orders = new List<Order>();
+
+            for (int i = 0; i < messageCountToBePushed; i++)
+            {
+                orders.Add(new Order()
+                { 
+                    OrderId = new Random().Next(0, 100), 
+                    Quantity = new Random().Next(0, 10),
+                    UnitPrice = new Decimal(new Random().NextDouble()) 
+                });
+            }
 
             ServiceBusClient _client = new(eventHubConnectionString);
 
