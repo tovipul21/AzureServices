@@ -9,10 +9,10 @@ namespace AzureEventHub_Read
         {
             //Console.ReadKey();
             var kvService = new KeyVaultService();
-            var keyVaultName = kvService.KeyVaultName;
-            string secretName = kvService.SecretName;
+            //var keyVaultName = kvService.KeyVaultName;
+            //string secretName = kvService.SecretName;
 
-            string connectionString = await kvService.RetriveSecretFromVaultAsync(keyVaultName, secretName);
+            string connectionString = await kvService.RetriveSecretFromVaultAsync();
 
             // Read messages from all partition
             //await ListenMessagesFromEventHubEventAsync(connectionString);

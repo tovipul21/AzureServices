@@ -11,17 +11,15 @@ namespace AzureEventHub
         {
             Console.WriteLine("Start event hub process");
             var kvService = new KeyVaultService();
-            var keyVaultName = kvService.KeyVaultName;
-            string secretName = kvService.SecretName;
             
             Console.WriteLine("Enter secret value");
-            string secretValue = Console.ReadLine();
+            string newSecretValue = Console.ReadLine();
 
             // Only set the secret value in Key Vault when some one updates it using console
-            if (secretValue.Trim().Length > 0)
-                await kvService.SetSecretIntoVaultAsync(keyVaultName, secretName, secretValue);
+            if (newSecretValue.Trim().Length > 0)
+                await kvService.SetSecretIntoVaultAsync(newSecretValue);
             
-            string connectionString = await kvService.RetriveSecretFromVaultAsync(keyVaultName, secretName);
+            string connectionString = await kvService.RetriveSecretFromVaultAsync();
             
             await SendMessagesToEventHubEventAsync(connectionString);
 
