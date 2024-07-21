@@ -25,10 +25,9 @@ namespace AzureServiceBus_Send
             List<Order> orders = new List<Order>() 
             { 
                 new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 23.20M },
-                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 42.55M }
+                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 42.55M },
+                new Order { OrderId = new Random().Next(0, 100), Quantity = new Random().Next(0, 10), UnitPrice = 52.65M }
             };
-
-            //Console.WriteLine($"Service Bus Queue Send Connectionstring = {eventHubConnectionString}");
 
             ServiceBusClient _client = new(eventHubConnectionString);
 
@@ -36,9 +35,10 @@ namespace AzureServiceBus_Send
 
             foreach (var order in orders)
             {
-                ServiceBusMessage serviceBusMessage = new ServiceBusMessage(order.ToString());
+                ServiceBusMessage _message = new ServiceBusMessage(order.ToString());
 
-                _sender.SendMessageAsync(serviceBusMessage).GetAwaiter().GetResult();
+                _message.ContentType = "application.json";
+                _sender.SendMessageAsync(_message).GetAwaiter().GetResult();
             }
 
             Console.WriteLine($"All the {orders.Count} messages has been sent.");
