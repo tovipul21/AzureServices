@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
@@ -15,13 +15,15 @@ namespace HelperServices
         {
             _builder = new ConfigurationBuilder().AddJsonFile("appSettings.json", false, false);
             _configurationRoot = _builder.Build();
+            _keyVaultName = this._configurationRoot["EventHubKeyVaultName"];
+            _secretName = this._configurationRoot["SecretName"];
         }
 
         public string KeyVaultName 
         {
             get
             {
-                _keyVaultName = this._configurationRoot["EventHubKeyVaultName"];
+                //_keyVaultName = this._configurationRoot["EventHubKeyVaultName"];
 
                 return _keyVaultName == null ? "" : _keyVaultName;
             }
@@ -31,7 +33,7 @@ namespace HelperServices
         { 
             get
             {
-                _secretName = this._configurationRoot["SecretName"];
+                //_secretName = this._configurationRoot["SecretName"];
 
                 return _secretName == null ? "" : _secretName;
             }
@@ -47,6 +49,13 @@ namespace HelperServices
             kvs = await client.GetSecretAsync(this.SecretName);
 
             return kvs.Value;
+        }
+
+        public async Task<string> RetriveSecretFromVaultAsync(string secretName)
+        {
+            _secretName = secretName;
+
+            return await RetriveSecretFromVaultAsync();
         }
 
         public async Task<string> SetSecretIntoVaultAsync(string newSecretValue)
