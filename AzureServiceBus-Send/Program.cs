@@ -37,7 +37,7 @@ namespace AzureServiceBus_Send
             {
                 ServiceBusMessage _message = new ServiceBusMessage(order.ToString());
 
-                _message.ContentType = "application.json";
+                _message.ContentType = "application/json";
                 _sender.SendMessageAsync(_message).GetAwaiter().GetResult();
             }
 
