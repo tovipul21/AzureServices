@@ -1,6 +1,4 @@
-﻿using Azure.Identity;
-using Azure.Messaging.EventHubs.Consumer;
-using Azure.Security.KeyVault.Secrets;
+﻿using Azure.Messaging.EventHubs.Consumer;
 using HelperServices;
 
 namespace AzureEventHub_Read
@@ -12,7 +10,7 @@ namespace AzureEventHub_Read
             //Console.ReadKey();
             var kvService = new KeyVaultService();
             var keyVaultName = kvService.KeyVaultName;
-            string secretName = "ReadEventHubMessageConnectionString";
+            string secretName = kvService.SecretName;
 
             string connectionString = await kvService.RetriveSecretFromVaultAsync(keyVaultName, secretName);
 
