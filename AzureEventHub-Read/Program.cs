@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Azure.Messaging.EventHubs.Consumer;
 using Azure.Security.KeyVault.Secrets;
+using HelperServices;
 
 namespace AzureEventHub_Read
 {
@@ -9,11 +10,11 @@ namespace AzureEventHub_Read
         static async Task Main(string[] args)
         {
             //Console.ReadKey();
-
-            var keyVaultName = "sample-keyvault-v3";
+            var kvService = new KeyVaultService();
+            var keyVaultName = kvService.KeyVaultName;
             string secretName = "ReadEventHubMessageConnectionString";
 
-            string connectionString = await RetriveSecretFromVaultAsync(keyVaultName, secretName);
+            string connectionString = await kvService.RetriveSecretFromVaultAsync(keyVaultName, secretName);
 
             // Read messages from all partition
             //await ListenMessagesFromEventHubEventAsync(connectionString);
@@ -26,18 +27,11 @@ namespace AzureEventHub_Read
             Console.ReadLine();
         }
 
-        private static async Task<string> RetriveSecretFromVaultAsync(string keyVaultName, string secretName)
-        {
-            KeyVaultSecret kvs;
-            var keyVaultURI = $"https://{keyVaultName}.vault.azure.net/";
-
-            var client = new SecretClient(new Uri(keyVaultURI), new DefaultAzureCredential());
-
-            kvs = await client.GetSecretAsync(secretName);
-
-            return kvs.Value;
-        }
-
+        /// <summary>
+        /// Read all the messages / events from Event Hub
+        /// </summary>
+        /// <param name="connectionString">Connection string to connect to Azure EventHub</param>
+        /// <returns></returns>
         private static async Task ListenMessagesFromEventHubEventAsync(string connectionString)
         {
             var consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
@@ -57,7 +51,7 @@ namespace AzureEventHub_Read
         }
 
         /// <summary>
-        /// Method to read messages from respective partition within Azure EventHub
+        /// Method to read messages from respective partition id within Azure EventHub
         /// </summary>
         /// <param name="connectionString">Connection string to connect to Azure EventHub</param>
         /// <returns></returns>
@@ -69,11 +63,7 @@ namespace AzureEventHub_Read
 
             var partitionId = (await consumerClient.GetPartitionIdsAsync()).First();
 
-            //string[] allPartitions = (await consumerClient.GetPartitionIdsAsync());
-
-            //foreach (var partitionId in allPartitions)
-            //{
-            IAsyncEnumerable<PartitionEvent> readEvents = consumerClient.ReadEventsFromPartitionAsync(partitionId, EventPosition.Earliest);
+            IAsyncEnumerable<PartitionEvent> readEvents = consumerClient.ReadEventsFromPartitionAsync(partitionId, EventPosition.Latest);
 
             await foreach (PartitionEvent _event in readEvents)
             {
@@ -83,8 +73,6 @@ namespace AzureEventHub_Read
                 Console.WriteLine($"Partition Key {_event.Data.PartitionKey}");
                 Console.WriteLine($"Data - {_event.Data.EventBody}");
             }
-
-            //}
         }
     }
 }
